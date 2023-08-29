@@ -24,6 +24,7 @@ from .mask_label import MaskLabel
 from .rev_gnn import GroupAddRev
 from .gnnff import GNNFF
 from .pmlp import PMLP
+from .curvGN import ConvCurv, compute_ricci_curvature
 
 __all__ = classes = [
     'MLP',
@@ -64,4 +65,6 @@ __all__ = classes = [
     'GroupAddRev',
     'GNNFF',
     'PMLP',
+    'ConvCurv',
+    'compute_ricci_curvature',
 ]
