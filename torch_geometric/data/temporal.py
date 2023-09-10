@@ -268,8 +268,6 @@ class TemporalData(BaseData):
         raise NotImplementedError
 
 
-###############################################################################
-
 
 def prepare_idx(idx):
     if isinstance(idx, int):
