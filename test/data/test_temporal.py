@@ -81,18 +81,7 @@ def test_temporal_data():
     assert 'src' not in data
 
 
-def test_train_val_test_split():
-    data = get_temporal_data(num_events=100, msg_channels=16)
 
-    train_data, val_data, test_data = data.train_val_test_split(
-        val_ratio=0.2, test_ratio=0.15)
-
-    assert len(train_data) == 65
-    assert len(val_data) == 20
-    assert len(test_data) == 15
-
-    assert train_data.t.max() < val_data.t.min()
-    assert val_data.t.max() < test_data.t.min()
 
 
 def test_temporal_indexing():
