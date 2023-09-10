@@ -251,30 +251,6 @@ class TemporalData(BaseData):
         info = ', '.join([size_repr(k, v) for k, v in self._store.items()])
         return f'{cls}({info})'
 
-    ###########################################################################
-
-    def train_val_test_split(self, val_ratio: float = 0.15,
-                             test_ratio: float = 0.15):
-        r"""Splits the data in training, validation and test sets according to
-        time.
-
-        Args:
-            val_ratio (float, optional): The proportion (in percents) of the
-                dataset to include in the validation split.
-                (default: :obj:`0.15`)
-            test_ratio (float, optional): The proportion (in percents) of the
-                dataset to include in the test split. (default: :obj:`0.15`)
-        """
-        val_time, test_time = np.quantile(
-            self.t.cpu().numpy(),
-            [1. - val_ratio - test_ratio, 1. - test_ratio])
-
-        val_idx = int((self.t <= val_time).sum())
-        test_idx = int((self.t <= test_time).sum())
-
-        return self[:val_idx], self[val_idx:test_idx], self[test_idx:]
-
-    ###########################################################################
 
     def coalesce(self):
         raise NotImplementedError
